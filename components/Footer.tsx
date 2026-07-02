@@ -3,7 +3,7 @@ export default function Footer() {
   return (
     <footer>
       <span className="logo">
-        FUKUDA <b>TATSUO</b>
+        Tatsuo <b>Fukuda</b>
       </span>
       <small>© {year} Fukuda Tatsuo — All rights reserved.</small>
     </footer>

@@ -44,7 +44,7 @@
   /* NAV */
   .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,48px);transition:background .5s var(--ease),border-color .5s var(--ease);border-bottom:1px solid transparent}
   .nav.is-solid{background:rgba(8,9,11,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .logo{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.14em;font-size:1.05rem;text-transform:uppercase;white-space:nowrap}
+  .logo{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.04em;font-size:1.05rem;white-space:nowrap}
   .logo b{font-weight:800}
   .nav__links{display:flex;gap:clamp(12px,2.2vw,30px);align-items:center}
   .nav__links a{font-family:"Cormorant Garamond",serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;color:var(--ink-dim);position:relative;padding:6px 0;transition:color .4s var(--ease)}
@@ -75,7 +75,7 @@
   .hero .ph::after{background:radial-gradient(120% 100% at 50% 30%,rgba(8,20,28,.15),rgba(4,8,12,.72) 78%),linear-gradient(180deg,rgba(4,8,12,.35),rgba(4,8,12,.55));mix-blend-mode:normal}
   .hero__inner{position:absolute;z-index:2;top:50%;right:clamp(10px,3vw,48px);transform:translateY(-50%);max-width:min(560px,52vw);text-align:right}
   .hero__titlewrap{display:inline-block}
-  .hero__title{font-family:"Cormorant Garamond",serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(2.2rem,7vw,5.2rem);line-height:1.08}
+  .hero__title{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.02em;font-size:clamp(2.2rem,7vw,5.2rem);line-height:1.08}
   .hero__bar{display:block;width:100%;height:1px;margin-top:20px;background:rgba(242,243,239,.55)}
   .hero__sub{margin-top:20px;font-family:"Jost",sans-serif;font-weight:300;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(.62rem,1.6vw,.8rem);color:var(--ink-dim)}
   .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:2;font-family:"Jost",sans-serif;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:12px}
@@ -194,7 +194,7 @@
 <body>
 
 <nav class="nav" id="nav">
-  <a href="#" class="logo" data-nav="home">FUKUDA <b>TATSUO</b></a>
+  <a href="#" class="logo" data-nav="home">Tatsuo <b>Fukuda</b></a>
   <button class="burger" id="burger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav__links" id="links">
     <a href="#" data-nav="home">Home</a>
@@ -337,7 +337,7 @@
 </div>
 
 <footer>
-  <span class="logo">FUKUDA <b>TATSUO</b></span>
+  <span class="logo">Tatsuo <b>Fukuda</b></span>
   <small>© <span id="yr"></span> Fukuda Tatsuo — All rights reserved.（仮）</small>
 </footer>
 

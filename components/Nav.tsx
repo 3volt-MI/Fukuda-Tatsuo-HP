@@ -45,7 +45,7 @@ export default function Nav() {
   return (
     <nav className={`nav${solid ? ' is-solid' : ''}`}>
       <Link href="/" className="logo">
-        FUKUDA <b>TATSUO</b>
+        Tatsuo <b>Fukuda</b>
       </Link>
 
       <button
