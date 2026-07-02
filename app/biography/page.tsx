@@ -36,17 +36,13 @@ export default async function BiographyPage() {
       <div className="bio">
         {/* Portrait */}
         <div className="bio__portrait ph rv">
-          {data?.portrait ? (
-            <Image
-              src={data.portrait.url}
-              alt={bio.name}
-              fill
-              sizes="(max-width:820px) 360px, 40vw"
-              style={{ objectFit: 'cover' }}
-            />
-          ) : (
-            <div style={{ background: 'linear-gradient(160deg,#0d2733,#05090e)', position: 'absolute', inset: 0 }} />
-          )}
+          <Image
+            src={data?.portrait?.url ?? '/images/home-hero.png'}
+            alt={bio.name}
+            fill
+            sizes="(max-width:820px) 360px, 40vw"
+            style={{ objectFit: 'cover' }}
+          />
         </div>
 
         {/* Text */}

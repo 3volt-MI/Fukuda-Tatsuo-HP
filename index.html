@@ -221,17 +221,17 @@
   </div>
   <div class="index wrap">
     <div class="index__grid">
-      <div class="tile rv" data-nav="statement"><div class="ph"><img alt="" src="https://picsum.photos/seed/stmt-4/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">01</span><span class="en">Statement</span></div></div>
-      <div class="tile rv" data-nav="gallery"><div class="ph"><img alt="" src="https://picsum.photos/seed/gal-cover-2/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">02</span><span class="en">Gallery</span></div></div>
-      <div class="tile rv" data-nav="journal"><div class="ph"><img alt="" src="https://picsum.photos/seed/jr-cover-5/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">03</span><span class="en">Journal</span></div></div>
-      <div class="tile rv" data-nav="biography"><div class="ph"><img alt="" src="https://picsum.photos/seed/bio-cover-7/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">04</span><span class="en">Biography</span></div></div>
+      <div class="tile rv" data-nav="statement"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">01</span><span class="en">Statement</span></div></div>
+      <div class="tile rv" data-nav="gallery"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">02</span><span class="en">Gallery</span></div></div>
+      <div class="tile rv" data-nav="journal"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">03</span><span class="en">Journal</span></div></div>
+      <div class="tile rv" data-nav="biography"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">04</span><span class="en">Biography</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- STATEMENT -->
 <section class="page" id="statement">
-  <div class="stmt-hero"><div class="ph"><img alt="" src="https://picsum.photos/seed/stmt-hero-3/2400/1200" loading="lazy" /></div></div>
+  <div class="stmt-hero"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div></div>
   <div class="wrap pad-top pad-bottom">
     <div class="sec-head sec-head--center rv"><h2 class="serif">Statement</h2></div>
     <div class="stmt-body rv">
@@ -278,7 +278,7 @@
   <div class="wrap pad-top pad-bottom">
     <div class="sec-head rv"><h2 class="serif">Biography</h2></div>
     <div class="bio">
-      <div class="bio__portrait ph rv"><img alt="ポートレート" src="https://picsum.photos/seed/portrait-11/1200/1500" loading="lazy" /></div>
+      <div class="bio__portrait ph rv"><img alt="ポートレート" src="images/home-hero.png" loading="lazy" /></div>
       <div>
         <div class="rv">
           <p class="bio__name serif">Fukuda Tatsuo</p>
@@ -355,11 +355,10 @@
   ];
   var galEl=document.getElementById('gal'),galSrc=[];
   GALLERY.forEach(function(g,i){
-    var h=(i%3===0?880:i%3===1?520:660);
-    galSrc.push('https://picsum.photos/seed/'+g.s+'/1600/'+(i%3===0?2000:i%3===1?1067:1300));
+    galSrc.push('images/home-hero.png');
     var fig=document.createElement('figure');
     fig.setAttribute('data-i',i); fig.setAttribute('data-ex',g.ex);
-    fig.innerHTML='<div class="ph"><img loading="lazy" alt="'+g.ex+' '+(i+1)+'" src="https://picsum.photos/seed/'+g.s+'/700/'+h+'"></div><figcaption>'+g.ex+'</figcaption>';
+    fig.innerHTML='<div class="ph"><img loading="lazy" alt="'+g.ex+' '+(i+1)+'" src="images/home-hero.png"></div><figcaption>'+g.ex+'</figcaption>';
     galEl.appendChild(fig);
   });
   /* filter bar */
@@ -394,7 +393,7 @@
   JOURNAL.forEach(function(a,i){
     var el=document.createElement('div');
     el.className='jcard'; el.setAttribute('data-i',i);
-    el.innerHTML='<div class="jcard__thumb ph"><img loading="lazy" alt="" src="https://picsum.photos/seed/'+a.img+'/560/420"></div>'+
+    el.innerHTML='<div class="jcard__thumb ph"><img loading="lazy" alt="" src="images/home-hero.png"></div>'+
       '<div><p class="jcard__date">'+a.date+'</p><h3 class="jcard__title serif">'+a.title+'</h3><p class="jcard__ex">'+a.ex+'</p><p class="jcard__more">Read ›</p></div>';
     jlist.appendChild(el);
   });
@@ -403,7 +402,7 @@
     var a=JOURNAL[+c.getAttribute('data-i')];
     document.getElementById('artDate').textContent=a.date;
     document.getElementById('artTitle').textContent=a.title;
-    document.getElementById('artImg').src='https://picsum.photos/seed/'+a.img+'/1600/900';
+    document.getElementById('artImg').src='images/home-hero.png';
     document.getElementById('artImg').alt=a.title;
     document.getElementById('artBody').innerHTML=a.body.map(function(p){return '<p>'+p+'</p>';}).join('');
     show('article');

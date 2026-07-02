@@ -52,7 +52,7 @@ export type JournalPost = MicroCMSBase & {
   title: string
   slug: string
   publishedAt: string
-  thumbnail: MicroCMSImage
+  thumbnail?: MicroCMSImage
   heroImage?: MicroCMSImage
   excerpt: string
   body: string

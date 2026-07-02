@@ -33,7 +33,7 @@ export default async function JournalPage() {
               <Link href={`/journal/${post.slug}`} className="jcard">
                 <div className="jcard__thumb ph">
                   <Image
-                    src={post.thumbnail.url}
+                    src={post.thumbnail?.url ?? '/images/home-hero.png'}
                     alt={post.title}
                     width={560}
                     height={420}
