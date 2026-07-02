@@ -58,9 +58,9 @@ export default async function HomePage() {
                 <span dangerouslySetInnerHTML={{ __html: settings.heroCopy }} />
               ) : (
                 <>
-                  The Silent
+                  Tatsuo
                   <br />
-                  Blue
+                  Fukuda
                 </>
               )}
             </h1>
