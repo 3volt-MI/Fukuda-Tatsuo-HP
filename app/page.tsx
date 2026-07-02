@@ -22,12 +22,12 @@ export default async function HomePage() {
     getGallery().catch(() => []),
   ])
 
-  // CMS 未登録の場合は手元の写真を仮画像として使用
+  // CMS 未登録の場合は picsum の仮画像を使用
   const PLACEHOLDERS = [
-    '/images/home-hero.png',
-    '/images/home-hero.png',
-    '/images/home-hero.png',
-    '/images/home-hero.png',
+    'https://picsum.photos/seed/stmt-4/900/1200',
+    'https://picsum.photos/seed/gal-cover-2/900/1200',
+    'https://picsum.photos/seed/jr-cover-5/900/1200',
+    'https://picsum.photos/seed/bio-cover-7/900/1200',
   ]
   const tileImages = [
     statement?.heroImage?.url ?? PLACEHOLDERS[0],
@@ -57,11 +57,7 @@ export default async function HomePage() {
               {settings?.heroCopy ? (
                 <span dangerouslySetInnerHTML={{ __html: settings.heroCopy }} />
               ) : (
-                <>
-                  Tatsuo
-                  <br />
-                  Fukuda
-                </>
+                'Tatsuo Fukuda'
               )}
             </h1>
             <span className="hero__bar" />

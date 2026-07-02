@@ -11,16 +11,20 @@ export default async function StatementPage() {
     <>
       {/* Hero image */}
       <div className="stmt-hero">
-        <div className="ph" style={{ position: 'absolute', inset: 0 }}>
-          <Image
-            src={data?.heroImage?.url ?? '/images/home-hero.png'}
-            alt="Statement hero"
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
+        {data?.heroImage ? (
+          <div className="ph" style={{ position: 'absolute', inset: 0 }}>
+            <Image
+              src={data.heroImage.url}
+              alt="Statement hero"
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        ) : (
+          <div className="ph" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg,#0d2733,#05090e)' }} />
+        )}
       </div>
 
       <div className="wrap pad-top pad-bottom">

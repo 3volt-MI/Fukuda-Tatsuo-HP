@@ -251,20 +251,22 @@ img {
   top: 50%;
   right: clamp(10px, 3vw, 48px);
   transform: translateY(-50%);
-  max-width: min(560px, 52vw);
+  max-width: min(640px, 58vw);
   text-align: right;
 }
 
 .hero__titlewrap {
   display: inline-block;
+  max-width: 100%;
 }
 
 .hero__title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 700;
   letter-spacing: 0.02em;
-  font-size: clamp(2.2rem, 7vw, 5.2rem);
+  font-size: clamp(1.5rem, 5vw, 4.2rem);
   line-height: 1.08;
+  white-space: nowrap;
 }
 
 .hero__bar {

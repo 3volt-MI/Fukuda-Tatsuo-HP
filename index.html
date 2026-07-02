@@ -73,9 +73,9 @@
   .hero{position:relative;height:100svh;min-height:560px}
   .hero .ph{position:absolute;inset:0}
   .hero .ph::after{background:radial-gradient(120% 100% at 50% 30%,rgba(8,20,28,.15),rgba(4,8,12,.72) 78%),linear-gradient(180deg,rgba(4,8,12,.35),rgba(4,8,12,.55));mix-blend-mode:normal}
-  .hero__inner{position:absolute;z-index:2;top:50%;right:clamp(10px,3vw,48px);transform:translateY(-50%);max-width:min(560px,52vw);text-align:right}
-  .hero__titlewrap{display:inline-block}
-  .hero__title{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.02em;font-size:clamp(2.2rem,7vw,5.2rem);line-height:1.08}
+  .hero__inner{position:absolute;z-index:2;top:50%;right:clamp(10px,3vw,48px);transform:translateY(-50%);max-width:min(640px,58vw);text-align:right}
+  .hero__titlewrap{display:inline-block;max-width:100%}
+  .hero__title{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.02em;font-size:clamp(1.5rem,5vw,4.2rem);line-height:1.08;white-space:nowrap}
   .hero__bar{display:block;width:100%;height:1px;margin-top:20px;background:rgba(242,243,239,.55)}
   .hero__sub{margin-top:20px;font-family:"Jost",sans-serif;font-weight:300;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(.62rem,1.6vw,.8rem);color:var(--ink-dim)}
   .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:2;font-family:"Jost",sans-serif;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:12px}
@@ -212,7 +212,7 @@
     <div class="ph"><img alt="南極の船上に立つ福田達生" src="images/home-hero.png" loading="eager" /></div>
     <div class="hero__inner">
       <div class="hero__titlewrap">
-        <h1 class="hero__title">Tatsuo<br />Fukuda</h1>
+        <h1 class="hero__title">Tatsuo Fukuda</h1>
         <span class="hero__bar"></span>
       </div>
       <p class="hero__sub">Official Diving Site</p>
@@ -221,17 +221,17 @@
   </div>
   <div class="index wrap">
     <div class="index__grid">
-      <div class="tile rv" data-nav="statement"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">01</span><span class="en">Statement</span></div></div>
-      <div class="tile rv" data-nav="gallery"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">02</span><span class="en">Gallery</span></div></div>
-      <div class="tile rv" data-nav="journal"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">03</span><span class="en">Journal</span></div></div>
-      <div class="tile rv" data-nav="biography"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div><div class="tile__cap"><span class="num">04</span><span class="en">Biography</span></div></div>
+      <div class="tile rv" data-nav="statement"><div class="ph"><img alt="" src="https://picsum.photos/seed/stmt-4/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">01</span><span class="en">Statement</span></div></div>
+      <div class="tile rv" data-nav="gallery"><div class="ph"><img alt="" src="https://picsum.photos/seed/gal-cover-2/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">02</span><span class="en">Gallery</span></div></div>
+      <div class="tile rv" data-nav="journal"><div class="ph"><img alt="" src="https://picsum.photos/seed/jr-cover-5/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">03</span><span class="en">Journal</span></div></div>
+      <div class="tile rv" data-nav="biography"><div class="ph"><img alt="" src="https://picsum.photos/seed/bio-cover-7/900/1200" loading="lazy" /></div><div class="tile__cap"><span class="num">04</span><span class="en">Biography</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- STATEMENT -->
 <section class="page" id="statement">
-  <div class="stmt-hero"><div class="ph"><img alt="" src="images/home-hero.png" loading="lazy" /></div></div>
+  <div class="stmt-hero"><div class="ph"><img alt="" src="https://picsum.photos/seed/stmt-hero-3/2400/1200" loading="lazy" /></div></div>
   <div class="wrap pad-top pad-bottom">
     <div class="sec-head sec-head--center rv"><h2 class="serif">Statement</h2></div>
     <div class="stmt-body rv">
@@ -278,7 +278,7 @@
   <div class="wrap pad-top pad-bottom">
     <div class="sec-head rv"><h2 class="serif">Biography</h2></div>
     <div class="bio">
-      <div class="bio__portrait ph rv"><img alt="ポートレート" src="images/home-hero.png" loading="lazy" /></div>
+      <div class="bio__portrait ph rv"><img alt="ポートレート" src="https://picsum.photos/seed/portrait-11/1200/1500" loading="lazy" /></div>
       <div>
         <div class="rv">
           <p class="bio__name serif">Fukuda Tatsuo</p>
@@ -355,10 +355,11 @@
   ];
   var galEl=document.getElementById('gal'),galSrc=[];
   GALLERY.forEach(function(g,i){
-    galSrc.push('images/home-hero.png');
+    var h=(i%3===0?880:i%3===1?520:660);
+    galSrc.push('https://picsum.photos/seed/'+g.s+'/1600/'+(i%3===0?2000:i%3===1?1067:1300));
     var fig=document.createElement('figure');
     fig.setAttribute('data-i',i); fig.setAttribute('data-ex',g.ex);
-    fig.innerHTML='<div class="ph"><img loading="lazy" alt="'+g.ex+' '+(i+1)+'" src="images/home-hero.png"></div><figcaption>'+g.ex+'</figcaption>';
+    fig.innerHTML='<div class="ph"><img loading="lazy" alt="'+g.ex+' '+(i+1)+'" src="https://picsum.photos/seed/'+g.s+'/700/'+h+'"></div><figcaption>'+g.ex+'</figcaption>';
     galEl.appendChild(fig);
   });
   /* filter bar */
@@ -393,7 +394,7 @@
   JOURNAL.forEach(function(a,i){
     var el=document.createElement('div');
     el.className='jcard'; el.setAttribute('data-i',i);
-    el.innerHTML='<div class="jcard__thumb ph"><img loading="lazy" alt="" src="images/home-hero.png"></div>'+
+    el.innerHTML='<div class="jcard__thumb ph"><img loading="lazy" alt="" src="https://picsum.photos/seed/'+a.img+'/560/420"></div>'+
       '<div><p class="jcard__date">'+a.date+'</p><h3 class="jcard__title serif">'+a.title+'</h3><p class="jcard__ex">'+a.ex+'</p><p class="jcard__more">Read ›</p></div>';
     jlist.appendChild(el);
   });
@@ -402,7 +403,7 @@
     var a=JOURNAL[+c.getAttribute('data-i')];
     document.getElementById('artDate').textContent=a.date;
     document.getElementById('artTitle').textContent=a.title;
-    document.getElementById('artImg').src='images/home-hero.png';
+    document.getElementById('artImg').src='https://picsum.photos/seed/'+a.img+'/1600/900';
     document.getElementById('artImg').alt=a.title;
     document.getElementById('artBody').innerHTML=a.body.map(function(p){return '<p>'+p+'</p>';}).join('');
     show('article');
