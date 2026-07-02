@@ -2,10 +2,10 @@
 
 import { useEffect, useCallback, useState } from 'react'
 import Image from 'next/image'
-import type { GalleryItem, Exhibition } from '@/lib/microcms'
+import type { GalleryItemWithImage, Exhibition } from '@/lib/microcms'
 
 type Props = {
-  items: GalleryItem[]
+  items: GalleryItemWithImage[]
   exhibitions: Exhibition[]
 }
 
@@ -14,7 +14,7 @@ export default function GalleryClient({ items, exhibitions }: Props) {
   const [lbOpen, setLbOpen] = useState(false)
   const [lbIndex, setLbIndex] = useState(0)
 
-  const filtered = activeEx === 'All' ? items : items.filter((it) => it.exhibition.id === activeEx)
+  const filtered = activeEx === 'All' ? items : items.filter((it) => it.exhibition?.id === activeEx)
 
   const openLb = (i: number) => {
     setLbIndex(i)
@@ -66,7 +66,7 @@ export default function GalleryClient({ items, exhibitions }: Props) {
       {/* Masonry grid */}
       <div className="gal">
         {items.map((item, i) => {
-          const visible = activeEx === 'All' || item.exhibition.id === activeEx
+          const visible = activeEx === 'All' || item.exhibition?.id === activeEx
           const filteredIdx = filtered.indexOf(item)
           return (
             <figure
@@ -75,7 +75,7 @@ export default function GalleryClient({ items, exhibitions }: Props) {
               onClick={() => visible && openLb(filteredIdx >= 0 ? filteredIdx : 0)}
               tabIndex={visible ? 0 : -1}
               role="button"
-              aria-label={item.caption ?? item.exhibition.title}
+              aria-label={item.caption ?? item.exhibition?.title ?? 'Gallery photo'}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault()
@@ -86,7 +86,7 @@ export default function GalleryClient({ items, exhibitions }: Props) {
               <div className="ph">
                 <Image
                   src={item.image.url}
-                  alt={item.caption ?? item.exhibition.title}
+                  alt={item.caption ?? item.exhibition?.title ?? 'Gallery photo'}
                   width={800}
                   height={Math.round(800 * (item.image.height / item.image.width))}
                   sizes="(max-width:560px) 100vw, (max-width:820px) 50vw, 33vw"
@@ -117,7 +117,7 @@ export default function GalleryClient({ items, exhibitions }: Props) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`${lbItem.image.url}?fm=webp&w=2000&q=85`}
-            alt={lbItem.caption ?? lbItem.exhibition.title}
+            alt={lbItem.caption ?? lbItem.exhibition?.title ?? 'Gallery photo'}
             style={{ maxWidth: '88vw', maxHeight: '82vh', width: 'auto', height: 'auto', objectFit: 'contain', filter: 'saturate(0.5) brightness(0.95)' }}
           />
           <button className="lb__btn lb__next" onClick={next} aria-label="次へ">

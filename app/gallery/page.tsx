@@ -1,14 +1,19 @@
-import { getGallery, getExhibitions } from '@/lib/microcms'
+import { getGallery, getExhibitions, type GalleryItem, type GalleryItemWithImage } from '@/lib/microcms'
 import RevealOnScroll from '@/components/RevealOnScroll'
 import GalleryClient from '@/components/gallery/GalleryClient'
 
 export const revalidate = 60
 
 export default async function GalleryPage() {
-  const [items, exhibitions] = await Promise.all([
-    getGallery().catch(() => []),
+  const [rawItems, exhibitions] = await Promise.all([
+    getGallery().catch((): GalleryItem[] => []),
     getExhibitions().catch(() => []),
   ])
+
+  // CMS上でimage未設定のまま公開された下書き的なエントリーはここで除外する
+  const items: GalleryItemWithImage[] = rawItems.filter(
+    (it: GalleryItem): it is GalleryItemWithImage => !!it?.image?.url,
+  )
 
   return (
     <div className="wrap pad-top pad-bottom">

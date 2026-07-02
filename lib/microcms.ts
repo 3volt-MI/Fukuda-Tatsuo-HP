@@ -38,11 +38,14 @@ export type Exhibition = MicroCMSBase & {
 
 // ─── gallery ─────────────────────────────────────────────
 export type GalleryItem = MicroCMSBase & {
-  image: MicroCMSImage
+  image?: MicroCMSImage
   caption?: string
-  exhibition: Exhibition
+  exhibition: Exhibition | null
   takenAt?: string
 }
+
+// image が確実に存在するとわかっている GalleryItem（Gallery ページで未設定エントリーを除外した後の型）
+export type GalleryItemWithImage = GalleryItem & { image: MicroCMSImage }
 
 // ─── journal ─────────────────────────────────────────────
 export type JournalPost = MicroCMSBase & {

@@ -22,49 +22,51 @@ export default async function HomePage() {
     getGallery().catch(() => []),
   ])
 
-  // Tile cover images: prefer CMS data, fallback to placeholder gradient
+  // CMS 未登録の場合は picsum の仮画像を使用
+  const PLACEHOLDERS = [
+    'https://picsum.photos/seed/stmt-4/900/1200',
+    'https://picsum.photos/seed/gal-cover-2/900/1200',
+    'https://picsum.photos/seed/jr-cover-5/900/1200',
+    'https://picsum.photos/seed/bio-cover-7/900/1200',
+  ]
   const tileImages = [
-    statement?.heroImage?.url ?? null,
-    gallery[0]?.image?.url ?? null,
-    journals[0]?.thumbnail?.url ?? null,
-    biography?.portrait?.url ?? null,
+    statement?.heroImage?.url ?? PLACEHOLDERS[0],
+    gallery[0]?.image?.url    ?? PLACEHOLDERS[1],
+    journals[0]?.thumbnail?.url ?? PLACEHOLDERS[2],
+    biography?.portrait?.url  ?? PLACEHOLDERS[3],
   ]
 
   return (
     <>
       {/* ── Hero ────────────────────────────────────── */}
       <section className="hero">
-        {settings?.heroImage ? (
-          <div className="ph" style={{ position: 'absolute', inset: 0 }}>
-            <Image
-              src={settings.heroImage.url}
-              alt="海中を差し込む光"
-              fill
-              priority
-              sizes="100vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-        ) : (
-          <div
-            className="ph"
-            style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg,#0d2733,#05090e)' }}
+        <div className="ph" style={{ position: 'absolute', inset: 0 }}>
+          <Image
+            src={settings?.heroImage?.url ?? '/images/home-hero.png'}
+            alt="南極の船上に立つ福田達生"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
           />
-        )}
+        </div>
 
         <div className="hero__inner">
-          <h1 className="hero__title">
-            {settings?.heroCopy ? (
-              <span dangerouslySetInnerHTML={{ __html: settings.heroCopy }} />
-            ) : (
-              <>
-                The <span className="ital">Silent</span>
-                <br />
-                Blue
-              </>
-            )}
-          </h1>
-          <p className="hero__sub">Underwater Photography</p>
+          <div className="hero__titlewrap">
+            <h1 className="hero__title">
+              {settings?.heroCopy ? (
+                <span dangerouslySetInnerHTML={{ __html: settings.heroCopy }} />
+              ) : (
+                <>
+                  The Silent
+                  <br />
+                  Blue
+                </>
+              )}
+            </h1>
+            <span className="hero__bar" />
+          </div>
+          <p className="hero__sub">Official Diving Site</p>
         </div>
 
         <ScrollCue />
@@ -76,22 +78,15 @@ export default async function HomePage() {
           {TILE_META.map(({ num, label, href }, i) => (
             <RevealOnScroll key={href} delay={i * 80}>
               <Link href={href} className="tile">
-                {tileImages[i] ? (
-                  <div className="ph" style={{ position: 'absolute', inset: 0 }}>
-                    <Image
-                      src={tileImages[i]!}
-                      alt={label}
-                      fill
-                      sizes="(max-width:560px) 100vw, (max-width:1024px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="ph"
-                    style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg,#0d2733,#05090e)' }}
+                <div className="ph" style={{ position: 'absolute', inset: 0 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={tileImages[i]}
+                    alt={label}
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
-                )}
+                </div>
                 <div className="tile__cap">
                   <span className="num">{num}</span>
                   <span className="en">{label}</span>
